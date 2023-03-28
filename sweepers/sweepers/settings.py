@@ -99,3 +99,19 @@ STATIC_URL = 'static/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+"""
+Basic Authencation:
+i have applied basic authentication for my sweeper project only user can access my api,
+and i write it in the 'REST_FRAMEWORK' variable and this will be default for all the view classes 
+and if you add default authentication classes here then you don't need to write it in each view class.
+"""
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+    'rest_framework.authentication.BasicAuthentication'
+    ],
+    'DEFAULT_PERMISSION_CLASSES':[
+    'rest_framework.permissions.IsAuthenticated'
+    ]
+}
