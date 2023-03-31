@@ -1,12 +1,34 @@
 from .models import *
 from .serializers import ExampleModelSerializer
-from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly, DjangoModelPermissions, DjangoModelPermissionsOrAnonReadOnly
 
 class ExampleListView(APIView):
+    queryset = ExampleModel.objects.all()
+    authentication_classes = [SessionAuthentication]
+    # permission_classes = [IsAdminUser]
+    # permission_classes = [IsAuthenticated]
+    # permission_classes = [AllowAny]
+    # permission_classes = [IsAuthenticatedOrReadOnly]
+    """
+    DJANGO MODEL PERMISSIONS:
+    in Django model permissions we need to declare the queryset variable or override the get queryset function.
+    Django model permission is very powerfull and we can customly give permissions to user from django built-in admin interface
+    """
+    # permission_classes = [DjangoModelPermissions] 
+
+    """
+    DJANGO MODEL PERMISSION AND READONLY:
+    this is similar to django model permissions, only the difference is in django model permission and on readonly allow anonymous users
+    to read data only.
+    """
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    
+
     def get(self, request):
         details = ExampleModel.objects.all()
         serializer = ExampleModelSerializer(details, many=True)
@@ -48,6 +70,8 @@ class ExampleDetailView(APIView):
             return Response({'Messege': 'Deleted'}, status=status.HTTP_200_OK)
         except:
             return Response({'Messege': 'Not Deleted'}, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 
 
