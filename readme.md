@@ -22,4 +22,6 @@
     - Model Serializer
     - Viewset
     - Model Viewset
+    - Throttling & Custom Throttling
+    - Django Filters Backend (Rest)
 ---
