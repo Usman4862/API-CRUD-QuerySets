@@ -24,4 +24,5 @@
     - Model Viewset
     - Throttling & Custom Throttling
     - Django Filters Backend (Rest)
+    - Pagination
 ---
