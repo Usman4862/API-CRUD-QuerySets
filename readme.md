@@ -27,4 +27,5 @@
     - Filtering
     - Ordering Filter
     - Pagination
+    - LimitOffset Pagination
 ---
