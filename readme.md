@@ -28,4 +28,5 @@
     - Ordering Filter
     - Pagination
     - LimitOffset Pagination
+    - Cursor Pagination
 ---
