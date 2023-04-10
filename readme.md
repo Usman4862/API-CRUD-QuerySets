@@ -30,5 +30,6 @@
     - LimitOffset Pagination
     - Cursor Pagination
     - Serializer Relations
+    - Nested Serializer
     - HyperLinked Model Serializer
 ---
